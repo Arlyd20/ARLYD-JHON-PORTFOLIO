@@ -93,8 +93,55 @@ backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: re
 const contactForm = document.querySelector("#contact-form");
 const formNote = document.querySelector("#form-note");
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  formNote.textContent = "Demo only: your message was not sent. Connect an email service or backend to receive submissions.";
-  formNote.classList.add("is-success");
-});
+if (contactForm && formNote) {
+  const API_BASE_URL = "http://localhost:3000";
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const formData = new FormData(contactForm);
+
+    const name = formData.get("name")?.trim();
+    const email = formData.get("email")?.trim();
+    const message = formData.get("message")?.trim();
+
+    formNote.classList.remove("is-success");
+    formNote.textContent = "Sending...";
+
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong.");
+      }
+
+      formNote.textContent = data.message;
+      formNote.classList.add("is-success");
+
+      contactForm.reset();
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      formNote.classList.remove("is-success");
+      formNote.textContent =
+        "Sorry, your message could not be sent. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
