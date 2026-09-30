@@ -183,6 +183,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .art-web { background: radial-gradient(ellipse at 50% 48%, rgba(126, 157, 91, .3), transparent 53%), linear-gradient(135deg, #222922, #141914); }
 .art-web::before, .art-support::before { position: absolute; width: 300px; height: 300px; border: 1px solid rgba(197, 243, 106, .18); border-radius: 50%; content: ""; }
 .art-web::after { position: absolute; width: 385px; height: 190px; transform: rotate(-29deg); border: 1px solid rgba(197, 243, 106, .16); content: ""; }
+.art-travel { background: radial-gradient(ellipse at 50% 46%, rgba(131, 217, 202, .22), transparent 48%), linear-gradient(140deg, #182725, #101715 72%); }
+.art-travel::before { position: absolute; width: 280px; height: 280px; border: 1px solid rgba(131, 217, 202, .17); border-radius: 50%; box-shadow: 0 0 0 25px rgba(131, 217, 202, .035), 0 0 0 56px rgba(197, 243, 106, .025); content: ""; }
+.travel-orbit { position: absolute; width: 270px; height: 105px; transform: rotate(-24deg); border: 1px solid rgba(197, 243, 106, .25); border-radius: 50%; }
+.travel-globe { position: relative; z-index: 1; width: 126px; height: 126px; overflow: hidden; border: 1px solid rgba(167, 227, 208, .65); border-radius: 50%; background: radial-gradient(circle at 34% 28%, rgba(197, 243, 106, .63), rgba(94, 171, 151, .48) 23%, rgba(18, 57, 53, .95) 70%); box-shadow: inset -18px -10px 30px rgba(1, 10, 9, .54), 0 0 36px rgba(131, 217, 202, .22); }
+.travel-globe i, .travel-globe b { position: absolute; display: block; border: 1px solid rgba(218, 255, 232, .42); border-radius: 50%; content: ""; }
+.travel-globe i { inset: -9px 31px; transform: rotate(28deg); }
+.travel-globe b { inset: 38px -7px; transform: rotate(-14deg); }
+.travel-marker { position: absolute; z-index: 2; top: calc(50% - 51px); left: calc(50% + 31px); width: 27px; height: 27px; display: grid; place-items: center; border: 2px solid #efffe8; border-radius: 50% 50% 50% 3px; transform: rotate(-45deg); color: #172215; background: var(--accent); box-shadow: 0 4px 13px rgba(0, 0, 0, .4); font-size: 12px; }
 .art-window { position: relative; z-index: 1; display: block; width: 54%; height: 132px; padding: 14px; border: 1px solid rgba(225, 240, 210, .25); background: rgba(17, 21, 17, .77); box-shadow: 0 22px 45px rgba(0, 0, 0, .35); }
 .art-window i { display: inline-block; width: 5px; height: 5px; margin-right: 4px; border-radius: 50%; background: var(--accent); opacity: .75; }
 .art-window b, .art-window em { display: block; height: 8px; margin-top: 19px; background: linear-gradient(90deg, var(--accent) 0 18%, rgba(197, 243, 106, .15) 18% 100%); opacity: .7; }
@@ -210,7 +218,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .project-tags { margin-bottom: 17px; }.project-tags li { padding: 4px 7px; }
 .project-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
 .project-link { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 800; }
+.project-link-secondary { color: var(--muted); }
+.project-link-secondary:hover { color: var(--accent); }
 .project-replace { color: var(--peach); font: 9px var(--font-mono); }
+.travel-project-note { display: block; margin-top: 10px; }
 
 /* Experience and education */
 .section-experience { background: #141714; }
